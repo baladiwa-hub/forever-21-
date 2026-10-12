@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forever 21 Redesign</title>
+<meta name="description" content="Responsive homepage redesign concept for Forever 21. Student assessment work, not the official site.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="announce" role="region" aria-label="Offers">
+  <span>Free shipping on orders $75+</span>
+  <span class="hl">New fall favorites from $19.99</span>
+  <a href="#offers">All offers</a>
+</div>
+
+<header class="header">
+  <div class="header__row">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <a class="logo" href="#top" aria-label="Forever 21 home">FOREVER 21</a>
+    <form class="search" role="search" id="searchForm">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <label class="sr" for="q">Search Forever 21</label>
+      <input id="q" type="search" placeholder="Search dresses, jeans, hoodies" autocomplete="off" aria-controls="suggest" aria-expanded="false">
+      <ul class="suggest" id="suggest" hidden></ul>
+    </form>
+    <div class="header__icons">
+      <button class="icon-btn search-toggle" id="searchToggle" aria-label="Search" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      </button>
+      <a class="icon-btn hide-sm" href="#account" aria-label="Account"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></a>
+      <button class="icon-btn" id="wishBtn" aria-label="Wishlist, 0 items">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.6A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z"/></svg>
+        <span class="count" id="wishCount">0</span>
+      </button>
+      <button class="icon-btn" id="bagBtn" aria-label="Bag, 0 items">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>
+        <span class="count" id="bagCount">0</span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Main" id="mainNav">
+    <ul>
+      <li><a href="#new">New In</a></li>
+      <li class="has-mega">
+        <button class="nav__trigger" aria-expanded="false" aria-controls="mega-women" id="womenTrigger">Women
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
+        </button>
+        <div class="mega" id="mega-women" hidden>
+          <div class="mega__inner">
+            <div class="mega__col">
+              <h3>Clothing</h3>
+              <ul>
+                <li><a href="#new">Dresses</a></li><li><a href="#new">Tops</a></li><li><a href="#new">Bottoms</a></li>
+                <li><a href="#new">Jackets and coats</a></li><li><a href="#new">Sweaters</a></li><li><a href="#active">Activewear</a></li>
+              </ul>
+            </div>
+            <div class="mega__col">
+              <h3>Accessories</h3>
+              <ul><li><a href="#new">Bags</a></li><li><a href="#new">Jewelry</a></li><li><a href="#new">Shoes</a></li></ul>
+            </div>
+            <div class="mega__col">
+              <h3>Shop by</h3>
+              <ul><li><a href="#new">New In</a></li><li><a href="#sale">Sale</a></li><li><a href="#plus">Plus</a></li></ul>
+            </div>
+            <a class="mega__promo" href="#sale"><span>Markdowns</span><strong>Up to 71% off</strong><em>Shop sale</em></a>
+          </div>
+        </div>
+      </li>
+      <li><a href="#plus">Plus</a></li>
+      <li><a href="#men">Men</a></li>
+      <li><a href="#new">Kids</a></li>
+      <li><a href="#new">Accessories</a></li>
+      <li><a href="#new">Shoes</a></li>
+      <li><a class="sale-link" href="#sale">Sale</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Mobile drawer -->
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" aria-label="Menu" aria-hidden="true">
+  <div class="drawer__bar">
+    <button class="icon-btn" id="drawerBack" aria-label="Back" hidden><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <strong id="drawerTitle">Shop</strong>
+    <button class="icon-btn" id="drawerClose" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <div class="drawer__body" id="drawerBody"></div>
+</aside>
+
+<main id="main">
+  <span id="top"></span>
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="hero__copy">
+      <p class="eyebrow">Fall 2026</p>
+      <h1 id="heroTitle">New fall favorites from $19.99</h1>
+      <p class="lead">Layers, sets and going-out looks, added every week.</p>
+      <div class="hero__cta">
+        <a class="btn btn--dark" href="#new">Shop women</a>
+        <a class="btn btn--line" href="#men">Shop men</a>
+      </div>
+    </div>
+    <div class="hero__img" role="img" aria-label="Placeholder for hero photo: two models in fall layers">
+      <svg viewBox="0 0 600 600" aria-hidden="true" preserveAspectRatio="xMidYMid slice"><defs><pattern id="dots" width="60" height="60" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="9" fill="#fff" opacity=".5"/><circle cx="45" cy="45" r="9" fill="#fff" opacity=".5"/></pattern></defs><rect width="600" height="600" fill="#E9E6DE"/><rect width="600" height="600" fill="url(#dots)"/></svg>
+      <span class="ph">Hero photo placeholder: two models in fall layers</span>
+    </div>
+  </section>
+
+  <section class="perks" id="offers" aria-label="Shipping, returns and offers">
+    <div><strong>Free shipping on orders $75+</strong><a href="#shipping">Shipping details</a></div>
+    <div><strong>30-day returns, $9.99 return fee</strong><a href="#returns">Return policy</a></div>
+    <div><strong>20% off your first app order</strong><a href="#app">Code and terms</a></div>
+  </section>
+
+  <section class="section" aria-labelledby="catTitle">
+    <h2 id="catTitle">Shop by category</h2>
+    <ul class="rail" id="rail"></ul>
+  </section>
+
+  <div id="rows"></div>
+
+  <section class="plus" id="plus" aria-labelledby="plusTitle">
+    <div class="plus__copy">
+      <h2 id="plusTitle">Every size, every style</h2>
+      <p>Shop the full range in Plus, find your fit with the size guide, and see the same trends in your size.</p>
+      <div class="hero__cta"><a class="btn btn--yellow" href="#plus">Shop Plus</a><a class="btn btn--line-light" href="#sizes">Size guide</a></div>
+    </div>
+    <div class="plus__img" role="img" aria-label="Placeholder for Plus-size model photo"><span class="ph">Photo placeholder: Plus-size models</span></div>
+  </section>
+
+  <section class="section" aria-labelledby="ugcTitle">
+    <div class="section__head"><div><h2 id="ugcTitle">Styled by you</h2><p>Tap a look to shop the pieces. Customer photos shown here are placeholders.</p></div><a class="link" href="#looks">See more looks</a></div>
+    <ul class="ugc" id="ugc"></ul>
+  </section>
+
+  <section class="news" aria-labelledby="newsTitle">
+    <div><h2 id="newsTitle">Get 15% off your first order</h2><p>Join the email list for drops, restocks and offers. Unsubscribe any time.</p></div>
+    <form id="newsForm" novalidate>
+      <div class="news__row">
+        <label class="sr" for="em">Email address</label>
+        <input id="em" type="email" placeholder="you@example.com" autocomplete="email" aria-describedby="emMsg" required>
+        <button class="btn btn--dark" type="submit">Sign me up</button>
+      </div>
+      <p class="msg" id="emMsg" role="status"></p>
+      <p class="fine">By signing up you agree to the <a href="#privacy">Privacy Policy</a> and <a href="#terms">offer terms</a>. The 15% email offer cannot be combined with the app offer.</p>
+    </form>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__cols" id="footerCols"></div>
+  <div class="footer__base">
+    <span>Los Angeles-born, style-obsessed. Fashion is for everyone.</span>
+    <span>Concept redesign for assessment purposes. Not affiliated with Forever 21.</span>
+  </div>
+</footer>
+
+<div class="sheet" id="sizeSheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+  <div class="sheet__panel">
+    <div class="sheet__head"><strong id="sheetTitle">Select a size</strong><button class="icon-btn" id="sheetClose" aria-label="Close size picker"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
+    <p class="sheet__name" id="sheetName"></p>
+    <div class="sizes" id="sizes" role="group" aria-label="Sizes"></div>
+    <a class="link" href="#sizes">Size guide</a>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
