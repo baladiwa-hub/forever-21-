@@ -67,6 +67,39 @@ var CATEGORY_IMAGES = {
   Accessories: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=500&q=85',
   Sale: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=500&q=85'
 };
+
+var UGC_ITEMS = [
+  {
+    handle: '@style.diary',
+    image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=85',
+    alt: 'Creator wearing a contemporary fashion outfit'
+  },
+  {
+    handle: '@everyday.edit',
+    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=85',
+    alt: 'Fashion portrait in a stylish outfit'
+  },
+  {
+    handle: '@the.denim.club',
+    image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=85',
+    alt: 'Friends showcasing everyday fashion'
+  },
+  {
+    handle: '@wearit.yourway',
+    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=85',
+    alt: 'Fashion creator portrait'
+  },
+  {
+    handle: '@closet.notes',
+    image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=85',
+    alt: 'Street-style fashion look'
+  },
+  {
+    handle: '@the.weekend.look',
+    image: 'https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=600&q=85',
+    alt: 'Fashion styling inspiration'
+  }
+];
   var RAIL = ['Women', 'Plus', 'Men', 'Dresses', 'Activewear', 'Accessories', 'Sale'];
   var FOOTER = [
     { t: 'Help', l: ['My account', 'Track my order', 'Return Center', 'Contact us', 'Size guide'] },
@@ -125,10 +158,19 @@ $('#rail').innerHTML = RAIL.map(function (l, i) {
     '</a>' +
     '</li>';
 }).join('');
-  $('#ugc').innerHTML = [0, 1, 2, 3, 4, 5].map(function (i) { return '<li><a href="#looks" style="background:' + TINTS[i % 5] + '"><span class="ph">@handle · shop 3 items</span></a></li>'; }).join('');
-  $('#footerCols').innerHTML = FOOTER.map(function (c) {
-    return '<details class="footer__col" open><summary><h3>' + c.t + '</h3></summary><ul>' + c.l.map(function (x) { return '<li><a href="#help">' + x + '</a></li>'; }).join('') + '</ul></details>';
-  }).join('');
+ 
+$('#ugc').innerHTML = UGC_ITEMS.map(function (item) {
+  return '<li>' +
+    '<a href="#looks" aria-label="' + esc(item.handle) + ' — shop this look">' +
+      '<img src="' + item.image + '"' +
+        ' alt="' + esc(item.alt) + '"' +
+        ' loading="lazy"' +
+        ' onerror="this.style.display=\'none\'">' +
+      '<span class="ugc__handle">' + esc(item.handle) + '</span>' +
+      '<span class="ugc__cta">SHOP THIS LOOK ↗</span>' +
+    '</a>' +
+  '</li>';
+}).join('');
 
   /* ---------- Toast + counters ---------- */
   var toastT;
