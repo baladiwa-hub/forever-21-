@@ -31,7 +31,43 @@
       P('a4', 'Active Quarter Zip Cropped Jacket', 29.99, 0, ['Birch', 'Colony Blue']),
       P('a5', 'Active Racerback Mini Dress', 34.99, 0, ['Juniper', 'Oasis'])] }
   ];
-  var RAIL = ['Women', 'Plus', 'Men', 'Kids', 'Dresses', 'Activewear', 'Accessories', 'Sale'];
+
+var PRODUCT_IMAGES = {
+  w1: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=85',
+  w2: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=85',
+  w3: 'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=700&q=85',
+  w4: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=85',
+  w5: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=700&q=85',
+
+  s1: 'https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=700&q=85',
+  s2: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=700&q=85',
+  s3: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=85',
+  s4: 'https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=700&q=85',
+  s5: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=700&q=85',
+
+  m1: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85',
+  m2: 'https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=700&q=85',
+  m3: 'https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=700&q=85',
+  m4: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=700&q=85',
+  m5: 'https://images.unsplash.com/photo-1627225924765-552d49cf47ad?auto=format&fit=crop&w=700&q=85',
+
+  a1: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=700&q=85',
+  a2: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=700&q=85',
+  a3: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=700&q=85',
+  a4: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=85',
+  a5: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=700&q=85'
+};
+
+var CATEGORY_IMAGES = {
+  Women: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=500&q=85',
+  Plus: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=500&q=85',
+  Men: 'https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=500&q=85',
+  Dresses: 'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=500&q=85',
+  Activewear: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=500&q=85',
+  Accessories: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=500&q=85',
+  Sale: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=500&q=85'
+};
+  var RAIL = ['Women', 'Plus', 'Men', 'Dresses', 'Activewear', 'Accessories', 'Sale'];
   var FOOTER = [
     { t: 'Help', l: ['My account', 'Track my order', 'Return Center', 'Contact us', 'Size guide'] },
     { t: 'Offers', l: ['All offers and codes', 'Get the app'] },
@@ -55,10 +91,12 @@
     var sale = pct >= 20;
     var shown = p.colors.slice(0, 4);
     return '<article class="card" data-id="' + p.id + '">' +
+      
       '<div class="card__img" style="background:' + TINTS[i % 5] + '">' +
       (sale ? '<span class="badge">-' + pct + '%</span>' : '') +
       '<button class="wish" aria-pressed="false" aria-label="Save ' + esc(p.name) + ' to wishlist">' + wishSvg + '</button>' +
-      '<span class="ph">Photo: ' + esc(p.name) + '</span></div>' +
+      '<img class="card__photo" src="' + (PRODUCT_IMAGES[p.id] || '') + '" alt="' + esc(p.name) + '" loading="lazy" onerror="this.style.display=\'none\'">' +
+      '</div>' +
       '<div class="swatches" role="group" aria-label="Colors for ' + esc(p.name) + '">' +
       shown.map(function (c, k) { return '<button class="sw" aria-pressed="' + (k === 0) + '" aria-label="' + esc(c) + '"><i style="background:' + (COL[c] || '#ccc') + '"></i></button>'; }).join('') +
       (p.colors.length > 4 ? '<span class="more">+' + (p.colors.length - 4) + '</span>' : '') + '</div>' +
@@ -73,9 +111,20 @@
       '<div class="grid">' + r.items.map(card).join('') + '</div></section>';
   }).join('');
 
-  $('#rail').innerHTML = RAIL.map(function (l, i) {
-    return '<li><a href="#' + (l === 'Sale' ? 'sale' : 'new') + '"' + (l === 'Sale' ? ' style="color:#C8102E;border-color:#C8102E"' : '') + '><span class="tile" style="background:' + TINTS[i % 5] + '"></span>' + l + '</a></li>';
-  }).join('');
+  
+$('#rail').innerHTML = RAIL.map(function (l, i) {
+  var image = CATEGORY_IMAGES[l] || '';
+
+  return '<li>' +
+    '<a href="#' + (l === 'Sale' ? 'sale' : 'new') + '"' +
+    (l === 'Sale' ? ' style="color:#C8102E;border-color:#C8102E"' : '') +
+    '>' +
+    '<span class="tile" style="background-image:url(&quot;' +
+    image + '&quot;)"></span>' +
+    '<span class="tile__label">' + esc(l) + '</span>' +
+    '</a>' +
+    '</li>';
+}).join('');
   $('#ugc').innerHTML = [0, 1, 2, 3, 4, 5].map(function (i) { return '<li><a href="#looks" style="background:' + TINTS[i % 5] + '"><span class="ph">@handle · shop 3 items</span></a></li>'; }).join('');
   $('#footerCols').innerHTML = FOOTER.map(function (c) {
     return '<details class="footer__col" open><summary><h3>' + c.t + '</h3></summary><ul>' + c.l.map(function (x) { return '<li><a href="#help">' + x + '</a></li>'; }).join('') + '</ul></details>';
